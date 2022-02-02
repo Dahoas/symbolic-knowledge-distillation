@@ -96,10 +96,12 @@ def main():
 
     to_filter = []
     with open(args.to_filter) as f:
-        for line in tqdm.tqdm(f):
+        for i, line in enumerate(tqdm.tqdm(f)):
             c_jsonl = json.loads(line)
             c_jsonl['valid'] = -1
             to_filter.append(c_jsonl)
+            if i > 10000:
+                break
 
     print('filtering {}'.format(len(to_filter)))
     tokenizer = transformers.AutoTokenizer.from_pretrained(args.model_type)
