@@ -92,6 +92,8 @@ def main():
             mean_prec.append((mean_val_prec + mean_test_prec) / 2.)
             print(mean_test_prec)
 
+    print("NEXT STEP")
+
     to_filter = []
     with open(args.to_filter) as f:
         for line in tqdm.tqdm(f):
